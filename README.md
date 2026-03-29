@@ -17,7 +17,7 @@
 
 <br/>
 
-![Overview Dashboard](docs/ui-screenshots/01-overview-dashboard.png)
+![Overview Dashboard](docs/Screenshots/01-overview-dashboard.png)
 
 </div>
 
@@ -38,12 +38,12 @@ It gives clinicians and researchers an instant, ranked recommendation of which a
 
 | Page | Preview |
 |------|---------|
-| 📊 **Overview Dashboard** | ![Overview](docs/ui-screenshots/01-overview-dashboard.png) |
-| 🔬 **Clinical Prediction** | ![Clinical](docs/ui-screenshots/03-clinical-prediction.png) |
-| 🌿 **Environmental Prediction** | ![Environmental](docs/ui-screenshots/04-environmental-prediction.png) |
-| 🧬 **Gene & Features** | ![Genes](docs/ui-screenshots/05-gene-features.png) |
-| 📈 **Model Performance** | ![Performance](docs/ui-screenshots/06-model-performance-metrics.png) |
-| 💊 **Treatment Strategy** | ![Strategy](docs/ui-screenshots/08-treatment-strategy.png) |
+| 📊 **Overview Dashboard** | ![Overview](docs/Screenshots/01-overview-dashboard.png) |
+| 🔬 **Clinical Prediction** | ![Clinical](docs/Screenshots/03-clinical-prediction.png) |
+| 🌿 **Environmental Prediction** | ![Environmental](docs/Screenshots/04-environmental-prediction.png) |
+| 🧬 **Gene & Features** | ![Genes](docs/Screenshots/05-gene-features.png) |
+| 📈 **Model Performance** | ![Performance](docs/Screenshots/06-model-performance-metrics.png) |
+| 💊 **Treatment Strategy** | ![Strategy](docs/Screenshots/08-treatment-strategy.png) |
 
 ---
 
@@ -89,7 +89,7 @@ antibiotic-resistance-predictor/
 │
 ├── 📂 docs/
 │   ├── methodology.md
-│   └── ui-screenshots/          ← App preview images
+│   └── Screenshots/             ← App preview images
 │
 ├── 📂 models/                   ← Trained ML model artifacts
 │   ├── primarymodel.pkl         ← Environmental model
