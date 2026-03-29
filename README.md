@@ -4,6 +4,7 @@
 
 ### Antibiotic Resistance Decision Support System
 
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Visit%20App-00ff9d?style=for-the-badge&labelColor=060b12)](https://antibiotic-resistance-predictor-fga9.onrender.com/)
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org)
@@ -15,6 +16,16 @@
 > 🏆 **Predicting antibiotic resistance before culture results arrive —**
 > combining clinical patient data and environmental sampling intelligence
 > into one real-time AI dashboard.
+
+<br/>
+
+### 🌐 [https://antibiotic-resistance-predictor-fga9.onrender.com](https://antibiotic-resistance-predictor-fga9.onrender.com/)
+
+> 🚨 **Note:** Backend is hosted on free tier (Render), so the first request may take **~20–30 seconds** due to cold start. Click the button below to wake the server before demoing.
+
+<br/>
+
+[![Wake Server](https://img.shields.io/badge/⚡%20Wake%20Server-Click%20Before%20Demo-f5a623?style=for-the-badge&labelColor=1a2d42)](https://antibiotic-resistance-predictor-fga9.onrender.com/health)
 
 <br/>
 
@@ -42,6 +53,7 @@
 | 🧬 **Gene & Feature Insight** | Shows which resistance genes and patient factors drive predictions |
 | 📈 **Model Performance** | Full F1 scores, ROC curves, confusion matrix — transparent and auditable |
 | 🎯 **Stewardship Principles** | Evidence-based antibiotic stewardship rules built into the UI |
+| 🔄 **Smart Fallback** | If backend is unavailable, the UI still runs with intelligent client-side fallback predictions |
 
 ---
 
@@ -58,7 +70,7 @@
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Local)
 
 ```bash
 # 1. Clone the repo
@@ -111,6 +123,7 @@ antibiotic-resistance-predictor/
 │   ├── primarymodel.py         ← Environmental model training
 │   └── secondarymodel.py       ← Clinical model training
 │
+├── .python-version             ← Pins Python 3.13 for Render
 ├── requirements.txt
 └── README.md
 ```
@@ -215,7 +228,7 @@ Environmental Model — 5 antibiotics
 | **Backend** | Python 3.13, Flask 3.0, Flask-CORS |
 | **ML** | scikit-learn, joblib, NumPy, pandas |
 | **Frontend** | Vanilla JS, Chart.js, CSS3 |
-| **Server** | Gunicorn |
+| **Hosting** | Render (free tier) |
 
 ---
 
