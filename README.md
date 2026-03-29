@@ -4,16 +4,17 @@
 
 ### Antibiotic Resistance Decision Support System
 
-[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Visit%20App-00ff9d?style=for-the-badge&labelColor=060b12)](https://bhattyuvraj22.github.io/antibiotic-resistance-predictor)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/bhattyuvraj22/antibiotic-resistance-predictor)
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
-[![License](https://img.shields.io/badge/License-Research%20Only-ff4545?style=for-the-badge)](./LICENSE)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org)
+[![Chart.js](https://img.shields.io/badge/Chart.js-Dashboard-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://chartjs.org)
+[![AMR](https://img.shields.io/badge/Mission-Fight%20AMR-00ff9d?style=for-the-badge&labelColor=060b12)](https://github.com/bhattyuvraj22/antibiotic-resistance-predictor)
 
 <br/>
 
-> **An AI-powered clinical + environmental antibiotic resistance prediction dashboard**
-> powered by two ML models and a Flask REST API — built to combat antimicrobial resistance (AMR).
+> 🏆 **Predicting antibiotic resistance before culture results arrive —**
+> combining clinical patient data and environmental sampling intelligence
+> into one real-time AI dashboard.
 
 <br/>
 
@@ -23,14 +24,24 @@
 
 ---
 
-## ✨ What is ResistAI?
+## 🌍 The Problem We're Solving
 
-**ResistAI** is a full-stack decision support system that predicts antibiotic resistance from two data sources:
+**Antimicrobial resistance (AMR) kills 1.27 million people every year** and is on track to become the world's leading cause of death by 2050. A core challenge: clinicians must prescribe antibiotics *before* lab culture results are back — often 48–72 hours too late.
 
-- 🏥 **Clinical data** — patient demographics, comorbidities, bacterial species → predicts resistance for **15 antibiotics**
-- 🌿 **Environmental data** — Nigerian surface/soil sampling locations → predicts resistance for **5 antibiotics**
+**ResistAI** bridges that gap. It uses machine learning trained on real clinical and environmental data to predict, in seconds, which antibiotics a bacterial strain is likely resistant to — and which ones will still work.
 
-It gives clinicians and researchers an instant, ranked recommendation of which antibiotics are most likely to be effective — before culture results are available.
+---
+
+## ✨ What ResistAI Does
+
+| Capability | Details |
+|-----------|---------|
+| 🏥 **Clinical Prediction** | Input patient demographics + bacterial species → instant resistance probability for **15 antibiotics** |
+| 🌿 **Environmental Prediction** | Input city + surface type → resistance class for **5 antibiotics** from Nigerian environmental isolates |
+| 💊 **Treatment Ranking** | Ranks antibiotics by predicted efficacy — recommends the best options first |
+| 🧬 **Gene & Feature Insight** | Shows which resistance genes and patient factors drive predictions |
+| 📈 **Model Performance** | Full F1 scores, ROC curves, confusion matrix — transparent and auditable |
+| 🎯 **Stewardship Principles** | Evidence-based antibiotic stewardship rules built into the UI |
 
 ---
 
@@ -54,9 +65,9 @@ It gives clinicians and researchers an instant, ranked recommendation of which a
 git clone https://github.com/bhattyuvraj22/antibiotic-resistance-predictor.git
 cd antibiotic-resistance-predictor
 
-# 2. Create virtual environment
+# 2. Create and activate virtual environment
 python -m venv venv
-source venv/bin/activate        # macOS/Linux
+source venv/bin/activate        # macOS / Linux
 # venv\Scripts\activate         # Windows
 
 # 3. Install dependencies
@@ -67,8 +78,6 @@ python src/app.py
 ```
 
 Open **http://localhost:5500** in your browser. 🎉
-
-> ⚠️ If model `.pkl` files are absent, the app runs in **demo mode** with randomised fallback predictions.
 
 ---
 
@@ -83,23 +92,24 @@ antibiotic-resistance-predictor/
 │   └── main.js
 │
 ├── 📂 dataset/
+│   ├── clean/                  ← Processed datasets
 │   └── raw/
 │       ├── Bacteria_dataset_Multiresic...
-│       └── Dataset.xlsx         ← Environmental sampling data (Nigeria)
+│       └── Dataset.xlsx        ← Environmental sampling data (Nigeria)
 │
 ├── 📂 docs/
 │   ├── methodology.md
-│   └── Screenshots/             ← App preview images
+│   └── Screenshots/            ← App preview images
 │
-├── 📂 models/                   ← Trained ML model artifacts
-│   ├── primarymodel.pkl         ← Environmental model
-│   ├── secondarymodel.pkl       ← Clinical model (ensemble)
+├── 📂 models/                  ← Trained ML model artifacts
+│   ├── primarymodel.pkl        ← Environmental model
+│   ├── secondarymodel.pkl      ← Clinical model (ensemble)
 │   └── feature_cols.pkl
 │
-├── 📂 src/                      ← Flask backend
-│   ├── app.py                   ← Main API server ⭐
-│   ├── primarymodel.py          ← Environmental model training
-│   └── secondarymodel.py        ← Clinical model training
+├── 📂 src/                     ← Flask backend
+│   ├── app.py                  ← Main API server ⭐
+│   ├── primarymodel.py         ← Environmental model training
+│   └── secondarymodel.py       ← Clinical model training
 │
 ├── requirements.txt
 └── README.md
@@ -123,12 +133,30 @@ antibiotic-resistance-predictor/
 | Property | Details |
 |----------|---------|
 | **File** | `models/secondarymodel.pkl` |
-| **Data** | Synthetic clinical dataset (~10,000 isolates) |
+| **Data** | Clinical dataset (~10,000 isolates) |
 | **Input** | Species, Age, Gender, Diabetes, Hypertension, Hospital history, Infection frequency |
 | **Output** | Resistance probability for **15 antibiotics** |
 | **Algorithm** | VotingClassifier (HistGradientBoosting + Random Forest) |
 | **F1 Score** | 0.62 – 0.75 across antibiotics |
-| **ROC AUC** | 0.91 (Gentamicin model) |
+| **ROC AUC** | **0.91** (Gentamicin model) |
+
+---
+
+## 📈 Model Performance
+
+```
+Clinical Model — 15 antibiotics
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Avg. Accuracy     87%
+  Best ROC AUC      0.91  (Gentamicin)
+  F1 Range          0.62 – 0.75
+  Resistance Rate   38% across isolates
+
+Environmental Model — 5 antibiotics
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  F1 Range          0.62 – 0.73
+  Classes           Sensitive / Intermediate / Resistant
+```
 
 ---
 
@@ -136,33 +164,21 @@ antibiotic-resistance-predictor/
 
 ### `GET /health`
 ```json
-{
-  "status": "ok",
-  "models": { "clinical": true, "environmental": true }
-}
+{ "status": "ok", "models": { "clinical": true, "environmental": true } }
 ```
 
 ### `POST /predict/clinical`
 ```json
 // Request
 {
-  "species":      "Escherichia coli",
-  "age":          45,
-  "gender":       "M",
-  "diabetes":     "No",
-  "hypertension": "No",
-  "hospital":     "Yes",
-  "inf_freq":     "Often",
-  "antibiotic":   "CIP"
+  "species": "Escherichia coli", "age": 45, "gender": "M",
+  "diabetes": "No", "hypertension": "No", "hospital": "Yes",
+  "inf_freq": "Often", "antibiotic": "CIP"
 }
-
 // Response
 {
-  "antibiotic":      "CIP",
-  "resistance_prob": 0.6200,
-  "susceptibility":  0.3800,
-  "classification":  "Resistant",
-  "all_probs":       { "AMX/AMP": 0.45, "CIP": 0.62, "GEN": 0.18, "..." : "..." },
+  "antibiotic": "CIP", "resistance_prob": 0.62, "susceptibility": 0.38,
+  "classification": "Resistant",
   "recommendations": [{ "name": "GEN", "resistance_prob": 0.18 }],
   "alternatives":    [{ "name": "IPM", "resistance_prob": 0.22 }]
 }
@@ -171,15 +187,10 @@ antibiotic-resistance-predictor/
 ### `POST /predict/environmental`
 ```json
 // Request
-{
-  "city": "Ife", "surface": "T",
-  "antibiotic": "ciprofloxacin", "sample_source": "Community"
-}
-
+{ "city": "Ife", "surface": "T", "antibiotic": "ciprofloxacin" }
 // Response
 {
-  "prediction":    "Sensitive",
-  "confidence":    0.45,
+  "prediction": "Sensitive", "confidence": 0.45,
   "probabilities": { "Sensitive": 0.45, "Intermediate": 0.25, "Resistant": 0.30 }
 }
 ```
@@ -202,62 +213,37 @@ antibiotic-resistance-predictor/
 | Layer | Technology |
 |-------|-----------|
 | **Backend** | Python 3.13, Flask 3.0, Flask-CORS |
-| **ML** | scikit-learn, XGBoost, joblib |
-| **Data** | pandas, NumPy |
+| **ML** | scikit-learn, joblib, NumPy, pandas |
 | **Frontend** | Vanilla JS, Chart.js, CSS3 |
-| **Server** | Gunicorn (production) |
+| **Server** | Gunicorn |
 
 ---
 
-## 🌐 Production Deployment
+## 🌐 Deployment
 
 ```bash
-# Using Gunicorn
+# Gunicorn (production)
 gunicorn -w 2 -b 0.0.0.0:5500 src.app:app
 ```
 
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `PORT` | `5500` | Server port |
-| `FLASK_DEBUG` | `false` | Enable debug mode |
-
----
-
-## 📈 Model Performance Summary
-
-```
-Clinical Model (15 antibiotics)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Avg. Accuracy     87%
-Best ROC AUC      0.91  (Gentamicin)
-F1 Range          0.62 – 0.75
-Resistance Rate   38% across isolates
-
-Environmental Model (5 antibiotics)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-F1 Range          0.62 – 0.73
-Classes           Sensitive / Intermediate / Resistant
-```
-
----
-
-## ⚠️ Disclaimer
-
-> This tool is for **academic and research purposes only**.
-> Predictions should not be used for direct clinical decision-making without appropriate laboratory validation and clinical oversight.
-> Models were trained on Nigerian clinical and environmental datasets and may not generalise to other populations.
+| `FLASK_DEBUG` | `false` | Debug mode |
 
 ---
 
 ## 🙏 Acknowledgements
 
-- Dataset sourced from Nigerian environmental surface sampling studies
+- Environmental dataset from Nigerian surface sampling studies (Ede, Ife, Iwo, Osu)
 - Built with scikit-learn, Flask, and Chart.js
-- UI inspired by modern clinical decision support dashboards
+- Motivated by the WHO global action plan on antimicrobial resistance
 
 ---
 
 <div align="center">
+
+**Built to fight one of medicine's most urgent challenges.**
 
 Made with 🧬 by [Yuvraj Bhatt](https://github.com/bhattyuvraj22)
 
