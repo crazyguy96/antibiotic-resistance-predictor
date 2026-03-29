@@ -84,7 +84,38 @@ source venv/bin/activate        # macOS / Linux
 
 # 3. Install dependencies
 pip install -r requirements.txt
+```
 
+### ⚠️ Model File Setup — Required Before Running
+
+The clinical model (`secondarymodel.pkl`) is **not included in this repository** due to its file size. You have two options to set it up:
+
+---
+
+**Option A — Download the pre-trained model (recommended)**
+
+Download `secondarymodel.pkl` from Google Drive and place it in the `models/` directory:
+
+```
+📥 Download: https://drive.google.com/file/d/142NDXb9ravI0O-zrJH2Xw5FaJQILb6i1/view?usp=drive_link
+📁 Save to:  models/secondarymodel.pkl
+```
+
+---
+
+**Option B — Retrain the model locally**
+
+If you prefer to train the model from scratch using the bundled dataset:
+
+```bash
+python src/secondarymodel.py
+```
+
+> ⏱️ **Note:** Training may take several minutes depending on your hardware. Once complete, `secondarymodel.pkl` will be saved automatically to the `models/` directory.
+
+---
+
+```bash
 # 4. Run the server
 python src/app.py
 ```
@@ -115,7 +146,7 @@ antibiotic-resistance-predictor/
 │
 ├── 📂 models/                  ← Trained ML model artifacts
 │   ├── primarymodel.pkl        ← Environmental model
-│   ├── secondarymodel.pkl      ← Clinical model (ensemble)
+│   ├── secondarymodel.pkl      ← Clinical model (ensemble) ⚠️ Not in repo — see setup above
 │   └── feature_cols.pkl
 │
 ├── 📂 src/                     ← Flask backend
@@ -146,6 +177,7 @@ antibiotic-resistance-predictor/
 | Property | Details |
 |----------|---------|
 | **File** | `models/secondarymodel.pkl` |
+| **Availability** | ⚠️ Not included in repo — [download from Google Drive](https://drive.google.com/file/d/142NDXb9ravI0O-zrJH2Xw5FaJQILb6i1/view?usp=drive_link) or regenerate via `python src/secondarymodel.py` |
 | **Data** | Clinical dataset (~10,000 isolates) |
 | **Input** | Species, Age, Gender, Diabetes, Hypertension, Hospital history, Infection frequency |
 | **Output** | Resistance probability for **15 antibiotics** |
