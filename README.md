@@ -282,7 +282,7 @@ gunicorn -w 2 -b 0.0.0.0:5500 src.app:app
 
 - Environmental dataset from Nigerian surface sampling studies (Ede, Ife, Iwo, Osu)
 - Built with scikit-learn, Flask, and Chart.js
-- Motivated by the WHO global action plan on antimicrobial resistance
+- Motivated by the WHO global action plan on antimicrobial resistance.
 
 ---
 
